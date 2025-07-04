@@ -34,12 +34,6 @@ export interface IWeatherData {
 }
 
 export interface IForeCastData {
-  //   list: [
-  //     {
-  //       dt: number;
-  //       main: IMain;
-  //     }
-  //   ];
   list: Array<{
     dt: number;
     main: IWeatherData["main"];
