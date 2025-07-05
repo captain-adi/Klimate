@@ -1,12 +1,12 @@
 import LoadingSkeleton from "@/components/skeleton/LoadingSkeleton";
 import { Button } from "@/components/ui/button";
-import { useGeoLocation } from "@/hooks/userLocation";
+import {useGetCurrentLocationCoordinates} from "@/hooks/userLocation";
 import { IoIosRefresh, IoMdAlert } from "react-icons/io";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useForecastQuery, useReverseGeoQuery, useWeatherQuery } from "@/hooks/useWeather";
 
 const WeatherDashboard = () => {
-  const { coordinates, isLoading, error, getLoacation } = useGeoLocation();
+  const { coordinates, isLoading, error, getLoacation } = useGetCurrentLocationCoordinates();
   const location = useReverseGeoQuery(coordinates);
   const forecast = useForecastQuery(coordinates)
   const weather = useWeatherQuery(coordinates)

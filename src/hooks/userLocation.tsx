@@ -7,7 +7,7 @@ interface IGeoLocationState {
   error: null | string;
 }
 
-export const useGeoLocation = () => {
+export const useGetCurrentLocationCoordinates = () => {
   const [locationData, setLocationData] = useState<IGeoLocationState>({
     isLoading: true,
     error: null,
