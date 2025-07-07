@@ -4,10 +4,12 @@ import type { ICordinates, IForeCastData, IReverseGeoCode, IWeatherData } from "
 class Weather_API {
   private createURL(
     endpoint: string,
-    params: Record<string, string | undefined>
+    params: Record<string, string | undefined>,
+    units : string
   ) {
     const searchParams = new URLSearchParams({
       appid: API_CONFIG.API_KEY,
+      units : API_CONFIG.units,
       ...params,
     });
     return `${endpoint}?${searchParams.toString()}`;
@@ -28,6 +30,7 @@ class Weather_API {
     const url = this.createURL(`${API_CONFIG.BASE_URL}/weather`, {
       lat: lat.toString(),
       lon: lon.toString(),
+     
     });
     return this.fetchData<IWeatherData>(url);
   }

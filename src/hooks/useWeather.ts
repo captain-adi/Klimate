@@ -1,7 +1,6 @@
 import type { ICordinates } from "@/api/type";
 import { useQuery } from "@tanstack/react-query";
 import { weatherAPI } from "@/api/weatherEndPoints";
-import type { IconBaseProps } from "react-icons/lib";
 
 export function useWeatherQuery(coordinates: ICordinates | null) {
   return useQuery({

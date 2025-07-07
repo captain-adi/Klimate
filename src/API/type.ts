@@ -58,5 +58,5 @@ export interface IReverseGeoCode{
     lat : number,
     lon: number,
     country? :string,
-
+     state : string,
 }
