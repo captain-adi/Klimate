@@ -5,7 +5,6 @@ class Weather_API {
   private createURL(
     endpoint: string,
     params: Record<string, string | undefined>,
-    units : string
   ) {
     const searchParams = new URLSearchParams({
       appid: API_CONFIG.API_KEY,
@@ -47,6 +46,13 @@ class Weather_API {
     const url = this.createURL(`${API_CONFIG.GEO}/reverse`, {
       lat: lat.toString(),
       lon: lon.toString(),
+    });
+    return this.fetchData<IReverseGeoCode[]>(url);
+  }
+  async searchLocation(query:string):Promise<IReverseGeoCode[]> {
+    const url = this.createURL(`${API_CONFIG.GEO}/direct`, {
+     q: query,
+     limit: "5",
     });
     return this.fetchData<IReverseGeoCode[]>(url);
   }

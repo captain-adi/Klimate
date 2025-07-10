@@ -1,6 +1,7 @@
 import { useTheme } from "../../context/theme-provider";
 import { Link } from "react-router-dom";
 import { GoSun, GoMoon } from "react-icons/go";
+import CitySearch from "../search";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -14,16 +15,25 @@ const Header = () => {
             className="h-14"
           />
         </Link>
-     
-      <div
-      className={`cursor-pointer transition-transform duration-500 ${theme === "dark" ? "rotate-180" : "rotate-0"}`}
-        onClick={() => {
-          setTheme(theme === "dark" ? "light" : "dark");
-        }}
-      >
-        {theme === "dark" ? <GoSun className=" text-yellow-400 text-xl rotate-0 transition-all"/> : <GoMoon className="text-xl rotate-0 transition-all"/>}
+
+        <div className="flex gap-7 justify-center items-center">
+          <CitySearch />
+          <div
+            className={`cursor-pointer transition-transform duration-500 ${
+              theme === "dark" ? "rotate-180" : "rotate-0"
+            }`}
+            onClick={() => {
+              setTheme(theme === "dark" ? "light" : "dark");
+            }}
+          >
+            {theme === "dark" ? (
+              <GoSun className=" text-yellow-400 text-xl rotate-0 transition-all" />
+            ) : (
+              <GoMoon className="text-xl rotate-0 transition-all" />
+            )}
+          </div>
+        </div>
       </div>
-       </div>
     </header>
   );
 };

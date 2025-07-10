@@ -1,9 +1,9 @@
 import { Card, CardContent, CardTitle } from "../ui/card";
-import { LineChart, ResponsiveContainer, XAxis, YAxis, Line, Tooltip, Legend } from "recharts";
+import { LineChart, ResponsiveContainer, XAxis, YAxis, Line, } from "recharts";
 import type { IForeCastData } from "@/api/type";
 import { format } from "date-fns";
 
-const TodayTemp = ({ data }: { data: IForeCastData }) => {
+const TodayTemp = ({ data }: { data: IForeCastData|undefined }) => {
   const chartData = data?.list?.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"),
     temp: Math.round(item.main.temp),

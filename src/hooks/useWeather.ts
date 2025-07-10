@@ -33,3 +33,12 @@ export function useReverseGeoQuery(coordinates : ICordinates|null){
     }
  })
 }
+export function useSearchLocation(query: string | null) {
+ return useQuery({
+    queryKey :["searchlocation",query] ,
+    queryFn: ()=>{
+        if(!query) throw new Error("no coordinates Provided");
+        return weatherAPI.searchLocation(query)
+    }
+ })
+}

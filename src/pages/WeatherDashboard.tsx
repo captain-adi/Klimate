@@ -10,7 +10,8 @@ import {
 } from "@/hooks/useWeather";
 import CurrentWeather from "@/components/currentWeather";
 import TodayTemp from "@/components/TodayTemp";
-import { data } from "react-router-dom";
+import WeatherDetails from "@/components/weatherDetails";
+import FutureDaysForeCast from "@/components/5DayForeCast";
 
 const WeatherDashboard = () => {
   const { coordinates, isLoading, error, getLoacation } =
@@ -41,6 +42,9 @@ const WeatherDashboard = () => {
       </Alert>
     );
   }
+  if(!weather.data || !forecast.data){
+    return <h1>no data found...</h1>
+  }
 
   return (
     <div>
@@ -59,7 +63,10 @@ const WeatherDashboard = () => {
           <CurrentWeather data={weather.data} location={location.data?.[0]}/>
           <TodayTemp data={forecast.data}/>
         </div>
-        <div></div>
+        <div className="grid lg:grid-cols-2 gap-6  ">
+          <WeatherDetails data={forecast.data} pressure={weather.data?.main.pressure}/>
+          <FutureDaysForeCast data={forecast.data}/>
+        </div>
       </div>
     </div>
   );
