@@ -41,10 +41,10 @@ const WeatherDetails = ({ data, pressure }: IWeatherDetails) => {
 ];
    
   return (
-    <Card>
-    <CardTitle className="ml-6">Weather Details</CardTitle>
-    <CardContent>
-      <div className="flex flex-col gap-6">
+    <Card className="h-fit"  >
+    <CardTitle  className="ml-6">Weather Details</CardTitle>
+    <CardContent >
+      <div className="flex flex-col  gap-6">
         {/* Split array into chunks of 2 for 2-column grid */}
         {Array.from({ length: Math.ceil(weatherDetails.length / 2) }).map((_, i) => (
           <div key={i} className="grid grid-cols-2 gap-6">

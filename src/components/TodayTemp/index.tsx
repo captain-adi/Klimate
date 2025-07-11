@@ -12,7 +12,7 @@ const TodayTemp = ({ data }: { data: IForeCastData|undefined }) => {
 
   return (
     <Card className="flex-1">
-      <CardTitle>Today's Temperature</CardTitle>
+      <CardTitle className="ml-6">Today's Temperature</CardTitle>
       <CardContent>
         <div className="h-[200px] w-full">
         <ResponsiveContainer height="100%" width="100%">

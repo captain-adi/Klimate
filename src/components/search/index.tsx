@@ -10,13 +10,19 @@ import {
 import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import { useSearchLocation } from "@/hooks/useWeather";
+import { useNavigate } from "react-router-dom";
 
 function CitySearch() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState<string>("");
+  const navigate = useNavigate();
   const { data: locations, isLoading, isError } = useSearchLocation(query);
-  console.log("lcation data: ", locations);
-  const handleSelect = (value: string) => {};
+
+  const handleSelect = (cityData: string) => {
+    const [lat, lon, name, country] = cityData.split("|");
+    navigate(`/city/${name}/?lat=${lat}&lon=${lon}&country=${country}`)
+    setOpen(false);
+  };
   return (
     <>
       <Button

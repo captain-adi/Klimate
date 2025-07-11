@@ -47,9 +47,9 @@ const WeatherDashboard = () => {
   }
 
   return (
-    <div>
-      <div className="flex justify-between items-center">
-        <h1 className="font-bold text-xl tracking-tight">My Location</h1>
+    <div className="px-4 md:px-0">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="font-bold text-xl tracking-tight ">My Location</h1>
         <Button variant={"outline"} size={"icon"} onClick={getLoacation}>
           <IoIosRefresh
             onClick={handleRefresh}

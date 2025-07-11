@@ -15,7 +15,7 @@ const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
  const formatTemperature = (temp: number) => { return Math.floor(temp) + "°"; };
   return (
     <Card>
-      <CardTitle>5-Day Forecast</CardTitle>
+      <CardTitle className="ml-6">5-Day Forecast</CardTitle>
       <CardContent className="flex flex-col gap-4">
         {dailyForecast.map((forecasetData) => (
           <Card>

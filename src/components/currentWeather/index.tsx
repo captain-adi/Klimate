@@ -6,22 +6,21 @@ import { FaWind } from "react-icons/fa";
 import { MdWaterDrop } from "react-icons/md";
 interface ICurrentWeatherData {
   data: IWeatherData | undefined;
-  location: IReverseGeoCode | undefined;
+  location?: IReverseGeoCode | undefined;
 }
 
 const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
-  console.log(data);
-  console.log(location);
+
   const formattedTemp = (temp: number | undefined) => {
     return `${Math.round(temp)}°`;
   };
   return (
     <div>
-      <Card>
+      <Card className="h-full">
         <CardContent className="grid grid-cols-2 gap-5  ">
-          <div>
+          <div className="flex flex-col justify-between">
             <div className="flex align-center gap-2 ">
-              <div className="text-xl font-bold">{location?.name},</div>
+              <div className="text-xl font-bold">{location?.name}{" "}</div>
               <span className="text-muted-foreground">{location?.state}</span>
             </div>
             <div className="mt-3">{location?.country}</div>
@@ -45,7 +44,7 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2  mt-6">
+            <div className="grid grid-cols-2  mt-9 gap-4">
               <div className="flex  gap-4 items-center">
                 <MdWaterDrop className="text-blue-400" />
                 <div className="flex flex-col">
@@ -72,7 +71,7 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
               src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png}`}
               alt=""
             />
-            <div>{data?.weather[0].description}</div>
+            <div className="text-muted-foreground">{data?.weather[0].description}</div>
           </div>
         </CardContent>
       </Card>
