@@ -1,4 +1,4 @@
-import React, { type ChangeEvent } from "react";
+import React from "react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -16,7 +16,7 @@ function CitySearch() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState<string>("");
   const navigate = useNavigate();
-  const { data: locations, isLoading, isError } = useSearchLocation(query);
+  const { data: locations, isLoading} = useSearchLocation(query);
 
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");

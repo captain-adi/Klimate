@@ -12,7 +12,8 @@ interface ICurrentWeatherData {
 const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
 
   const formattedTemp = (temp: number | undefined) => {
-    return `${Math.round(temp)}°`;
+    if (temp === undefined) return "N/A";
+  return `${Math.round(temp)}°`;
   };
   return (
     <div>
