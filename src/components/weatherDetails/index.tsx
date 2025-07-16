@@ -1,6 +1,6 @@
 import { Card, CardContent, CardTitle } from "../ui/card";
-import { Sunrise, SunsetIcon, Wind, Compass, Pointer } from "lucide-react";
-import type { IForeCastData, IWeatherData } from "@/api/type";
+import { Sunrise, SunsetIcon, Compass, Pointer } from "lucide-react";
+import type { IForeCastData } from "@/api/type";
 import { format } from "date-fns";
 interface IWeatherDetails {
   data: IForeCastData ;

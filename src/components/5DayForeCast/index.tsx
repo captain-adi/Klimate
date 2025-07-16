@@ -11,7 +11,7 @@ interface IFutureDaysForeCast {
 const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
   
 
-  const dailyForecast = Object.values(data.list).slice(1, 6);
+  const dailyForecast = (data.list).slice(1, 6);
  const formatTemperature = (temp: number) => { return Math.floor(temp) + "°"; };
   return (
     <Card>
