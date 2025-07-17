@@ -12,6 +12,15 @@ import { Search } from "lucide-react";
 import { useSearchLocation } from "@/hooks/useWeather";
 import { useNavigate } from "react-router-dom";
 
+
+export interface ILocation {
+  name: string;
+  lat: number;
+  lon: number;
+  country: string;
+  state?: string;
+}
+
 function CitySearch() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState<string>("");
