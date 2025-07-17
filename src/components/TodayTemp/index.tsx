@@ -4,7 +4,7 @@ import type { IForeCastData } from "@/api/type";
 import { format } from "date-fns";
 
 const TodayTemp = ({ data }: { data: IForeCastData|undefined }) => {
-  const chartData = data?.list?.slice(0, 8).map((item) => ({
+  const chartData = data?.list?.slice(0, 8).map((item :  IForeCastData["list"][number]) => ({
     time: format(new Date(item.dt * 1000), "ha"),
     temp: Math.round(item.main.temp),
     feels_like: Math.round(item.main.feels_like),

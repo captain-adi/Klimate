@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import { useSearchLocation } from "@/hooks/useWeather";
 import { useNavigate } from "react-router-dom";
+import type { IReverseGeoCode } from "@/api/type";
 
 
 export interface ILocation {
@@ -49,7 +50,7 @@ function CitySearch() {
           onValueChange={setQuery}
         />
         <CommandList>
-          <CommandEmpty>{isLoading && "No city found."}</CommandEmpty>
+          <CommandEmpty>{isLoading && "Loading..."}</CommandEmpty>
           
           {locations && locations.length > 0 && (
             <CommandGroup heading="Suggestions">
@@ -60,7 +61,7 @@ function CitySearch() {
                     </span>
                   </div>
                 )}
-                {locations?.map((location) => (
+                {locations?.map((location : IReverseGeoCode ) => (
                   <CommandItem
                     key={`${location.lat}-${location.lon}`}
                     value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
