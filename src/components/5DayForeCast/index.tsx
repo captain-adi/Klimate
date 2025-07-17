@@ -17,7 +17,7 @@ const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
     <Card>
       <CardTitle className="ml-6">5-Day Forecast</CardTitle>
       <CardContent className="flex flex-col gap-4">
-        {dailyForecast.map((forecasetData) => (
+        {dailyForecast.map((forecasetData : IForeCastData["list"][0]) => (
           <Card>
             <CardContent className="flex justify-between ">
               <div>
