@@ -1,8 +1,7 @@
 import LoadingSkeleton from "@/components/skeleton/LoadingSkeleton";
 import { Button } from "@/components/ui/button";
 import { useGetCurrentLocationCoordinates } from "@/hooks/userLocation";
-import { IoIosRefresh, IoMdAlert } from "react-icons/io";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { IoIosRefresh} from "react-icons/io";
 import {
   useForecastQuery,
   useReverseGeoQuery,
@@ -12,9 +11,8 @@ import CurrentWeather from "@/components/currentWeather";
 import TodayTemp from "@/components/TodayTemp";
 import WeatherDetails from "@/components/weatherDetails";
 import FutureDaysForeCast from "@/components/5DayForeCast";
-
 const WeatherDashboard = () => {
-  const { coordinates, isLoading, error, getLoacation } =
+  const { coordinates, isLoading,  getLoacation } =
     useGetCurrentLocationCoordinates();
   const location = useReverseGeoQuery(coordinates);
   const forecast = useForecastQuery(coordinates);
@@ -30,18 +28,7 @@ const WeatherDashboard = () => {
   if (isLoading) {
     return <LoadingSkeleton />;
   }
-
-  if (error) {
-    return (
-      <Alert variant="destructive">
-        <IoMdAlert />
-        <AlertTitle>Location Error</AlertTitle>
-        <AlertDescription>
-          <p>{error}</p>
-        </AlertDescription>
-      </Alert>
-    );
-  }
+  
   if(!weather.data || !forecast.data){
     return <h1>no data found...</h1>
   }

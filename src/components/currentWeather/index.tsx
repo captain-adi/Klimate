@@ -67,12 +67,12 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
               </div>
             </div>
           </div>
-          <div>
-            <img
-              src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png}`}
-              alt=""
-            />
-            <div className="text-muted-foreground">{data?.weather[0].description}</div>
+          <div className="flex flex-col ">
+          <img
+  src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png`}
+  alt={data?.weather[0].description || "weather icon"}
+/>
+            <div className="text-muted-foreground text-center">{data?.weather[0].description}</div>
           </div>
         </CardContent>
       </Card>

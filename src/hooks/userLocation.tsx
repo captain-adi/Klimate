@@ -32,7 +32,16 @@ export const useGetCurrentLocationCoordinates = () => {
           lon: myPosition.coords.longitude,
         },
       });
-    },(error)=>{console.log(error)});
+    },(error)=>{
+       setLocationData({
+      isLoading: false,
+      error: error.message, // shows 'User denied Geolocation', etc.
+      coordinates:{
+      lat : 28.644800,
+      lon : 77.216721 
+    },
+    });
+    });
   };
   useEffect(() => {
     getLoacation();

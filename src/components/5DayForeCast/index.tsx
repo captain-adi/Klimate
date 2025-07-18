@@ -17,14 +17,14 @@ const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
     <Card>
       <CardTitle className="ml-6">5-Day Forecast</CardTitle>
       <CardContent className="flex flex-col gap-4">
-        {dailyForecast.map((forecasetData : IForeCastData["list"][0]) => (
-          <Card>
+        {dailyForecast.map((forecasetData : IForeCastData["list"][0] , index) => (
+          <Card key={index}>
             <CardContent className="flex justify-between ">
               <div>
                 <div>
                   {format(new Date(forecasetData.dt * 1000), "EEE, LLL d")}
                 </div>
-                <div className="text-muted-foreground">clear sky</div>
+                <div className="text-muted-foreground">{forecasetData.weather[0].description}</div>
               </div>
               <div className="flex items-center gap-4 ">
                 <div className="text-blue-400 flex   items-center gap-2">
