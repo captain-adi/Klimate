@@ -11,16 +11,28 @@ interface IFutureDaysForeCast {
 const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
   
 
-  const dailyForecast = (data.list).slice(1, 6);
- const formatTemperature = (temp: number) => { return Math.floor(temp) + "°"; };
+  // Group forecasts by day and pick the first entry for each day
+  const getDailyForecast = (list: IForeCastData["list"]) => {
+    const daysMap = new Map<string, typeof list[0]>();
+    list.forEach((item) => {
+      const dateStr = format(new Date(item.dt * 1000), "yyyy-MM-dd");
+      if (!daysMap.has(dateStr)) {
+        daysMap.set(dateStr, item);
+      }
+    });
+    // Return the first 5 unique days (skip today if you want future only)
+    return Array.from(daysMap.values()).slice(0, 5);
+  };
+  const dailyForecast = getDailyForecast(data.list);
+  const formatTemperature = (temp: number) => { return Math.floor(temp) + "°"; };
   return (
     <Card>
       <CardTitle className="ml-6">5-Day Forecast</CardTitle>
       <CardContent className="flex flex-col gap-4">
         {dailyForecast.map((forecasetData : IForeCastData["list"][0] , index: number) => (
           <Card key={index}>
-            <CardContent className="flex justify-between ">
-              <div>
+            <CardContent className="flex flex-col  items-center gap-5 sm:flex-row sm:justify-between">
+              <div className="flex gap-2.5 sm:gap-0 sm:flex-col">
                 <div>
                   {format(new Date(forecasetData.dt * 1000), "EEE, LLL d")}
                 </div>
@@ -49,7 +61,6 @@ const FutureDaysForeCast = ({ data }: IFutureDaysForeCast) => {
             </CardContent>
           </Card>
         ))}
-        <Card></Card>
       </CardContent>
     </Card>
   );

@@ -24,13 +24,13 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
               <div className="text-xl font-bold">{location?.name}{" "}</div>
               <span className="text-muted-foreground">{location?.state}</span>
             </div>
-            <div className="mt-3">{location?.country}</div>
-            <div className="flex mt-3">
-              <span className="text-7xl font-bold tracking-tight">
+            <div className="mt-3 self-start">{location?.country}</div>
+            <div className="flex flex-col sm:flex-row mt-3">
+              <span className="text-7xl self-start font-bold tracking-tight">
                 {formattedTemp(data?.main.temp)}
               </span>
-              <div className="ml-4">
-                <span className="text-muted-foreground">
+              <div className=" flex flex-col  sm:ml-4">
+                <span className="text-muted-foreground self-start">
                   Feels like {formattedTemp(data?.main.temp)}
                 </span>
                 <div className="flex gap-2">
@@ -45,11 +45,11 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2  mt-9 gap-4">
+            <div className="flex justify-between mt-9 gap-7">
               <div className="flex  gap-4 items-center">
                 <MdWaterDrop className="text-blue-400" />
                 <div className="flex flex-col">
-                  <div>Humadity</div>
+                  <div>Humidity</div>
                   <div className="text-muted-foreground">
                     {data?.main.humidity}
                     <span>%</span>
@@ -67,7 +67,7 @@ const CurrentWeather: React.FC<ICurrentWeatherData> = ({ data, location }) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          <div className="flex flex-col  h-fit">
           <img
   src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png`}
   alt={data?.weather[0].description || "weather icon"}
